@@ -2,14 +2,14 @@ name: Update Calendar
 
 on:
   schedule:
-    - cron: '0 20 * * *' # 每天自動跑一次
-  workflow_dispatch: # 允許手動按按鈕跑
+    - cron: '0 20 * * *' # 每天自動跑一次 (北京時間凌晨 4:00)
+  workflow_dispatch: # 允許手動點擊執行
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 給機器人寫入權限
+      contents: write # 給予寫入權限以便更新檔案
       
     steps:
       - name: Checkout code
@@ -21,7 +21,8 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: pip install requests lunarcalendar
+        # 這裡只保留 requests，因為農曆我們已經寫死在代碼裡了，這樣跑得最快最穩
+        run: pip install requests
 
       - name: Run script
         run: python main.py

@@ -65,10 +65,10 @@ for year in years:
             is_off = day['isOffDay']
             # 更新圖標：休假用雀躍派對臉，補班用骷髏頭
             if is_off:
-                summary = "🥳 放假！"
+                summary = "🥳 放假啦！"
                 e_type = "HOLIDAY"
             else:
-                summary = "💀 補班"
+                summary = "💀 慘遭補班"
                 e_type = "WORK"
             ics_content.extend(create_event(date_str, summary, e_type))
 
